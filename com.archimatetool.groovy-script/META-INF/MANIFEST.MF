@@ -1,0 +1,33 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Archi Groovy Scripting
+Bundle-SymbolicName: com.archimatetool.groovyscripts;singleton:=true
+Bundle-Localization: plugin
+Bundle-Version: 1.0.0.qualifier
+Bundle-Vendor: Grégoire Rolland
+Require-Bundle: org.eclipse.core.runtime,
+ org.eclipse.ui,
+ org.eclipse.help.ui,
+ com.archimatetool.editor,
+ com.archimatetool.commandline,
+ com.archimatetool.help,
+ com.archimatetool.editor.browser,
+ com.archimatetool.canvas
+Bundle-ActivationPolicy: lazy
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Bundle-Activator: com.archimatetool.groovyscripts.ArchiScriptPlugin
+Export-Package: com.archimatetool.groovyscripts,
+ com.archimatetool.groovyscripts.dom,
+ com.archimatetool.groovyscripts.dom.jarchi,
+ com.archimatetool.groovyscripts.dom.model,
+ com.archimatetool.groovyscripts.views.console,
+ com.archimatetool.groovyscripts.views.file,
+ com.archimatetool.groovyscripts.views.scripts
+Automatic-Module-Name: com.archimatetool.script
+Bundle-ClassPath: libs/groovy-2.5.8.jar,
+ .,
+ libs/groovy-jsr223-2.5.8.jar,
+ libs/commons-io-2.5.jar,
+ libs/maven-invoker-3.0.1.jar,
+ libs/maven-shared-utils-3.2.1.jar,
+ libs/plexus-component-annotations-1.7.1.jar

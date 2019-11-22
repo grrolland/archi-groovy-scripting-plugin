@@ -1,0 +1,8 @@
+#
+# Dependencies File
+# 
+# Dependency format : Maven GAV
+#
+# groupId:artifactId:version
+#
+#org.apache.poi:poi:4.1.1 # For excel export
