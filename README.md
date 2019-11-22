@@ -5,7 +5,7 @@ This is an extension to Archi that allows scripting of tasks using the Groovy la
 
 ## How to use it
 
-Download the plugin here : [https://github.com/grrolland/archi-groovy-scripting-plugin-binary/raw/master/com.archimatetool.groovyscripts-1.0.0.archiplugin]
+Download the plugin here : [https://github.com/grrolland/archi-groovy-scripting-plugin-binary/raw/master/com.archimatetool.groovyscripts-1.0.0.archiplugin](https://github.com/grrolland/archi-groovy-scripting-plugin-binary/raw/master/com.archimatetool.groovyscripts-1.0.0.archiplugin)
 
 Use the menu Help->Manage Plugins in Archi to install it.
 
