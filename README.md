@@ -4,7 +4,10 @@
 This is an extension to Archi that allows scripting of tasks using the Groovy language.
 
 ## How to use it
-TODO
+
+Download the plugin here : [https://github.com/grrolland/archi-groovy-scripting-plugin-binary/raw/master/com.archimatetool.groovyscripts-1.0.0.archiplugin]
+
+Use the menu Help->Manage Plugins in Archi to install it.
 
 ## Roadmap
 There is no formal roadmap for the moment, development is done through sprints that try to gradually improve the overall value of this plugin. The Focus is currently on user experience.
