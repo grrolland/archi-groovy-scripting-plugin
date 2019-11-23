@@ -2,7 +2,7 @@
 
 ## What is this?
 
-__Notice__ : This plugin is a free adaptation of the very good [jArchi](https://github.com/archimatetool/archi-scripting-plugin) module and provide the same functionnatity and more with Groovy Scripting. Tanks a lot to the authors of this module and their advices.
+__Notice__ : This plugin is a free adaptation of the very good [jArchi](https://github.com/archimatetool/archi-scripting-plugin) module and provide the same functionality and more with Groovy Scripting. Tanks a lot to the authors of this module and their advices.
 
 __Version 1.0.0__
 
@@ -18,7 +18,7 @@ This is an extension to Archi that allows scripting using the Groovy language. T
 
 Archi Groovy help you to manage JARs dependency for your script. All the Java ecosystem is on your hands. See the dependency section to know more.
 
-You can use your favorite IDE to edit and control version for your script. Archi Groovy Scripting was successfuly tested with Eclispe and IntelliJ IDEA.
+You can use your favorite IDE to edit and control version for your script. Archi Groovy Scripting was successfully tested with Eclispe and IntelliJ IDEA.
 
 Archi Groovy users can share their scripts and learn from each other, see here for some shared scripts.
 
@@ -32,11 +32,39 @@ Use the menu Help->Manage Plugins in Archi to install it.
 
 You can create a dependencies management directly from the Groovy Scripting view : 
 
+![Create .deps](imgs/create-deps.png "Create dependencies file")
+
+This file is created with an example content :
+ 
+```
+#
+# Dependencies File
+# 
+# Dependency format : Maven GAV
+#
+# groupId:artifactId:version
+#
+org.apache.poi:poi:4.1.1 # For excel export
+```
+
+Each line in this file represents a top level dependency for your scripts. The format of the line is like the Groovy DSL for dependencies :
+
+```
+groupId:artifactId:version
+```
+
+When you execute a script, all the transitive dependencies are downloaded in the __.lib__ folder and each library downloaded is added to the runtime classpath of your script.
+
 ## Roadmap
-There is no formal roadmap for the moment, development is done through sprints that try to gradually improve the overall value of this plugin. The Focus is currently on user experience.
+The roadmap is shared with you helped by the __Issues__ section of the project. Be free to create __Feature Issue__ and we could discuss about it and add it to the roadmap. 
 
 ## Contributing code to Archi and Plug-ins
-TODO
+First, create an issue, feature or not. 
+
+After that, you can fork the project, add your code and create a pull request attached to your issue.
+
+The pull request will be discussed and when and when everyone agrees, the request will be merged.  
+
 ## Archi
 Archi® is a free, open source, cross-platform tool and editor to create ArchiMate models.
 
