@@ -30,6 +30,10 @@ Download the plugin here : [https://github.com/grrolland/archi-groovy-scripting-
 
 Use the menu Help->Manage Plugins in Archi to install it.
 
+## Exemples
+
+Some groovy script examples for Archi are located here : [Examples](examples)
+
 ## Dependencies Management
 
 You can create a dependencies management directly from the Groovy Scripting view : 

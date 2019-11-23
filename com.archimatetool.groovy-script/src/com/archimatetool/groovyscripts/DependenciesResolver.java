@@ -2,11 +2,14 @@ package com.archimatetool.groovyscripts;
 
 import java.io.BufferedReader;
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.nio.file.FileSystems;
+import java.nio.file.Files;
+import java.nio.file.LinkOption;
+import java.nio.file.attribute.FileTime;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
@@ -82,55 +85,69 @@ public class DependenciesResolver {
 	}
 	
 	
-	private List<String> readDepsFile() {
+	private List<String> readDepsFile(BufferedReader depsFileReader) throws IOException {
 		
 		final List<String> deps = new ArrayList<String>();
-		
-		BufferedReader depsFile = null;
-		try {
-			depsFile = new BufferedReader(new FileReader(new File(getDepsPath())));
-			
-			for(String line = depsFile.readLine(); line != null; line = depsFile.readLine())
-			{
-				if (line.contains("#")) {
-					if (line.startsWith("#"))
-					{
-						line = "";
-					}
-					else
-					{
-						line = line.split("#")[0];	
-					}
+		for(String line = depsFileReader.readLine(); line != null; line = depsFileReader.readLine()) {
+			if (line.contains("#")) {
+				if (line.startsWith("#")) {
+					line = "";
 				}
-				if (line.split(":").length == 3)
-				{
-					deps.add(line.strip());
+				else {
+					line = line.split("#")[0];	
 				}
 			}
-			
-		} catch (IOException e) {
-		}
-		finally {
-			if (depsFile != null) {
-				try {
-					depsFile.close();
-				} catch (IOException e) {
-				}
+			if (line.split(":").length == 3) {
+				deps.add(line.strip());
 			}
 		}
-		
+
 		return deps;
 	}
 	
 	public void resolveDepencencies() {
+		
+		System.err.println(ArchiScriptPlugin.PLUGIN_ID + " : Resolve dependencies ...");
+		
 		init();
-		readDepsFile().forEach(s -> {
-			try {
-				invoker.execute(createInvocationRequest(s));
-			} catch (MavenInvocationException e) {
-				e.printStackTrace();
+		
+		BufferedReader depsFileReader = null;
+		try {
+			File depsFile = new File(getDepsPath());
+			FileTime lastModified = Files.getLastModifiedTime( FileSystems.getDefault().getPath(getDepsPath()), LinkOption.NOFOLLOW_LINKS);
+			long lastDepsUpdate = ArchiScriptPlugin.INSTANCE.getPreferenceStore().getLong("lastDepsUpdate");
+			depsFileReader = new BufferedReader(new FileReader(depsFile));
+			
+			if (lastModified.toMillis() > lastDepsUpdate || lastDepsUpdate == 0) {
+				readDepsFile(depsFileReader).forEach(s -> {
+					try {
+						invoker.execute(createInvocationRequest(s));
+					} catch (MavenInvocationException e) {
+						System.err.println(ArchiScriptPlugin.PLUGIN_ID + " : Error in dependency resolution, check dependency : " + s);
+					}
+				});
 			}
-		});
+			else {
+				System.err.println(ArchiScriptPlugin.PLUGIN_ID + " : Dependencies are already resolved, skip.");
+			}
+			
+			ArchiScriptPlugin.INSTANCE.getPreferenceStore().setValue("lastDepsUpdate", System.currentTimeMillis());
+			
+			System.err.println(ArchiScriptPlugin.PLUGIN_ID + " : All dependencies are resolved");
+			
+		} catch (IOException e) {
+			System.err.println(ArchiScriptPlugin.PLUGIN_ID + " : Error in dependency resolution, check .deps file.");
+		}
+		finally {
+			if(depsFileReader != null) {
+				try {
+					depsFileReader.close();
+				} catch (IOException e) {
+				}
+			}
+			
+		}
+		
 	}
 	
 	public List<URL> getDependenciesURL() {

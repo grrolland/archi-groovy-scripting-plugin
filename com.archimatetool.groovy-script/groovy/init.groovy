@@ -1,5 +1,5 @@
 
-def jArchi(obj) {
+def gArchi(obj) {
 	if (obj == selection)
 		return obj;
 	else 

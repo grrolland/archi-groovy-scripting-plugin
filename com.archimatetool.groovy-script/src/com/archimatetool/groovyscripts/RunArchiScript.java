@@ -55,16 +55,19 @@ public class RunArchiScript {
 	}
 	
 	public void run() {
+		
+		if (file == null || !file.getName().endsWith(".groovy") && !file.getName().endsWith(".deps")) {
+			return;
+		}
+		
         ScriptEngine engine;
         ScriptStarter starter;
         
         // 	Start the console
         ConsoleOutput.start();
         
-        System.err.println(ArchiScriptPlugin.PLUGIN_ID + " : Resolve dependencies ...");
         DependenciesResolver deps = new DependenciesResolver();
         deps.resolveDepencencies();
-        System.err.println(ArchiScriptPlugin.PLUGIN_ID + " : All dependencies are resolved");
         
     	engine = new ScriptEngineManager().getEngineByName("groovy"); //$NON-NLS-1$
 		GroovyClassLoader cl = ((GroovyScriptEngineImpl) engine).getClassLoader();
