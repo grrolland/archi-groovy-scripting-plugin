@@ -64,7 +64,7 @@ When you execute a script, all the transitive dependencies are downloaded in the
 ## Roadmap
 The roadmap is shared with you helped by the __Issues__ section of the project. Be free to create __Feature Issue__ and we could discuss about it and add it to the roadmap. 
 
-## Contributing code to Archi and Plug-ins
+## Contributing code to Archi Groovy Scripting Plug-in
 First, create an issue, feature or not. 
 
 After that, you can fork the project, add your code and create a pull request attached to your issue.
