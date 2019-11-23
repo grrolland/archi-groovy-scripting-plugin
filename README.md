@@ -22,6 +22,8 @@ You can use your favorite IDE to edit and control version for your script. Archi
 
 Archi Groovy users can share their scripts and learn from each other, see here for some shared scripts.
 
+![Screenshot](imgs/screen.png "Screenshot")
+
 ## How to use it
 
 Download the plugin here : [https://github.com/grrolland/archi-groovy-scripting-plugin-binary/raw/master/com.archimatetool.groovyscripts-1.0.0.archiplugin](https://github.com/grrolland/archi-groovy-scripting-plugin-binary/raw/master/com.archimatetool.groovyscripts-1.0.0.archiplugin)
