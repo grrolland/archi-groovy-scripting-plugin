@@ -21,7 +21,7 @@
          </separator>
          <command
                commandId="com.archimatetool.groovyscripts.command.showScriptsView"
-               icon="img/script.png"
+               icon="img/groovy.png"
                label="%command.label"
                style="push">
          </command>
@@ -95,7 +95,7 @@
          point="org.eclipse.ui.views">
       <view
             class="com.archimatetool.groovyscripts.views.scripts.ScriptsFileViewer"
-            icon="img/script.png"
+            icon="img/groovy.png"
             id="com.archimatetool.groovyscripts.scriptsView"
             name="%view.name"
             restorable="true">

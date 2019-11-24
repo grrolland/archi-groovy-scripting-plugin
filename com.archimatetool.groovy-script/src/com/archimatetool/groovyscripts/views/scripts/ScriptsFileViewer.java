@@ -99,7 +99,7 @@ extends AbstractFileView  {
         fActionRun.setEnabled(false);
         
         fActionNewFileDeps.setText(Messages.ScriptsFileDepsViewer_0);
-        fActionNewFileDeps.setText(Messages.ScriptsFileDepsViewer_1);
+        fActionNewFileDeps.setToolTipText(Messages.ScriptsFileDepsViewer_1);
         
         
         // Script

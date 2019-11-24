@@ -4,7 +4,7 @@
 
 __Notice__ : This plugin is a free adaptation of the very good [jArchi](https://github.com/archimatetool/archi-scripting-plugin) module and provide the same functionality and more with Groovy Scripting. Tanks a lot to the authors of this module and their advices.
 
-__Version 1.0.0__
+__Version 1.0.0__ (works with Archi 4.6.0)
 
 This is an extension to Archi that allows scripting using the Groovy language. The Archi Groovy scripting API has access to the components of an Archi model so that you can construct your own tasks and queries to achieve things that you might not be able to do easily via the user interface. For example you could write an Archi Groovy script to:
 
