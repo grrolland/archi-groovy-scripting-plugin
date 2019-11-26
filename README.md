@@ -2,7 +2,7 @@
 
 ## What is this?
 
-__Notice__ : This plugin is a free adaptation of the very good [jArchi](https://github.com/archimatetool/archi-scripting-plugin) module and provide the same functionality and more with Groovy Scripting. Tanks a lot to the authors of this module and their advices.
+__Notice__ : This plugin is a free adaptation (and a derived work) of the very good [jArchi](https://github.com/archimatetool/archi-scripting-plugin) module and provide the same functionality and more with Groovy Scripting. Tanks a lot to the authors of this module and their advices.
 
 __Version 1.0.0__ (works with Archi 4.6.0)
 
