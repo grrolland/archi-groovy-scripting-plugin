@@ -7,11 +7,6 @@ package com.archimatetool.groovyscripts;
 
 import java.io.File;
 import java.io.IOException;
-import java.net.MalformedURLException;
-import java.net.URL;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.Properties;
 
 import javax.script.Bindings;
 import javax.script.ScriptContext;
@@ -19,29 +14,20 @@ import javax.script.ScriptEngine;
 import javax.script.ScriptEngineManager;
 import javax.script.ScriptException;
 
-import org.apache.maven.shared.invoker.DefaultInvocationRequest;
-import org.apache.maven.shared.invoker.DefaultInvoker;
-import org.apache.maven.shared.invoker.InvocationRequest;
-import org.apache.maven.shared.invoker.Invoker;
-import org.apache.maven.shared.invoker.MavenInvocationException;
 import org.codehaus.groovy.jsr223.GroovyScriptEngineImpl;
 import org.eclipse.core.runtime.CoreException;
-import org.eclipse.core.runtime.FileLocator;
 import org.eclipse.core.runtime.IConfigurationElement;
 import org.eclipse.core.runtime.IExtension;
 import org.eclipse.core.runtime.IExtensionPoint;
-import org.eclipse.core.runtime.Path;
 import org.eclipse.core.runtime.Platform;
 import org.eclipse.ui.PlatformUI;
 
 import com.archimatetool.editor.utils.FileUtils;
 import com.archimatetool.groovyscripts.commands.CommandHandler;
 import com.archimatetool.groovyscripts.dom.IArchiScriptDOMFactory;
-import com.archimatetool.groovyscripts.preferences.IPreferenceConstants;
 import com.archimatetool.groovyscripts.views.console.ConsoleOutput;
 
 import groovy.lang.GroovyClassLoader;
-import jdk.nashorn.api.scripting.NashornScriptEngineFactory;
 
 
 /**

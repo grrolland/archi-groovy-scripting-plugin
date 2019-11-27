@@ -4,7 +4,6 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.io.PrintWriter;
 import java.net.URL;
 
 import javax.script.ScriptContext;
@@ -13,7 +12,6 @@ import javax.script.ScriptException;
 
 import com.archimatetool.editor.utils.PlatformUtils;
 import com.archimatetool.groovyscripts.commands.CommandHandler;
-import com.archimatetool.groovyscripts.views.console.ConsoleOutput;
 
 public class GroovyStarter implements ScriptStarter {
 

@@ -119,7 +119,7 @@ public class DependenciesResolver {
 				}
 			}
 			if (line.split(":").length == 3) {
-				deps.add(line.strip());
+				deps.add(line.trim());
 			}
 		}
 
