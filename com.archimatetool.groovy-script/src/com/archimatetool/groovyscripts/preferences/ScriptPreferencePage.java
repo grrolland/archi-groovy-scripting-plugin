@@ -46,6 +46,7 @@ implements IWorkbenchPreferencePage, IPreferenceConstants {
     
     private Text fScriptsFolderTextField;
     private Text fEditorPathTextField;
+    private Text fMavenRepoPathTextField;
     
     private Combo fDoubleClickBehaviourCombo;
 
@@ -126,11 +127,43 @@ implements IWorkbenchPreferencePage, IPreferenceConstants {
         gd.horizontalSpan = 2;
         fDoubleClickBehaviourCombo.setLayoutData(gd);
         
+        // Maven Repo path
+        label = new Label(settingsGroup, SWT.NULL);
+        label.setText(Messages.ScriptPreferencePage_10);
+        
+        fMavenRepoPathTextField = new Text(settingsGroup, SWT.BORDER | SWT.SINGLE);
+        fMavenRepoPathTextField.setLayoutData(new GridData(GridData.FILL_HORIZONTAL));
+        // Single text control so strip CRLFs
+        UIUtils.conformSingleTextControl(fMavenRepoPathTextField);
+        
+        Button file2Button = new Button(settingsGroup, SWT.PUSH);
+        file2Button.setText(Messages.ScriptPreferencePage_2);
+        file2Button.addSelectionListener(new SelectionAdapter() {
+            @Override
+            public void widgetSelected(SelectionEvent e) {
+                String path = chooseMavenRepoPath();
+                if(path != null) {
+                    fMavenRepoPathTextField.setText(path);
+                }
+            }
+        });
+        
         setValues();
         
         return client;
     }
 
+    private String chooseMavenRepoPath() {
+        DirectoryDialog dialog = new DirectoryDialog(Display.getCurrent().getActiveShell());
+        dialog.setText(Messages.ScriptPreferencePage_11);
+        dialog.setMessage(Messages.ScriptPreferencePage_12);
+        File file = new File(fMavenRepoPathTextField.getText());
+        if(file.exists()) {
+            dialog.setFilterPath(fMavenRepoPathTextField.getText());
+        }
+        return dialog.open();
+    }
+    
     private String chooseFolderPath() {
         DirectoryDialog dialog = new DirectoryDialog(Display.getCurrent().getActiveShell());
         dialog.setText(Messages.ScriptPreferencePage_8);
@@ -155,6 +188,7 @@ implements IWorkbenchPreferencePage, IPreferenceConstants {
     private void setValues() {
         fScriptsFolderTextField.setText(getPreferenceStore().getString(PREFS_SCRIPTS_FOLDER));
         fEditorPathTextField.setText(getPreferenceStore().getString(PREFS_EDITOR));
+        fMavenRepoPathTextField.setText(getPreferenceStore().getString(PREFS_MAVEN_REPO_FOLDER));
         fDoubleClickBehaviourCombo.select(getPreferenceStore().getInt(PREFS_DOUBLE_CLICK_BEHAVIOUR));
     }
     
@@ -162,6 +196,7 @@ implements IWorkbenchPreferencePage, IPreferenceConstants {
     public boolean performOk() {
         getPreferenceStore().setValue(PREFS_SCRIPTS_FOLDER, fScriptsFolderTextField.getText());
         getPreferenceStore().setValue(PREFS_EDITOR, fEditorPathTextField.getText());
+        getPreferenceStore().setValue(PREFS_MAVEN_REPO_FOLDER, fMavenRepoPathTextField.getText());
         getPreferenceStore().setValue(PREFS_DOUBLE_CLICK_BEHAVIOUR, fDoubleClickBehaviourCombo.getSelectionIndex());
        
         return true;
@@ -171,6 +206,7 @@ implements IWorkbenchPreferencePage, IPreferenceConstants {
     protected void performDefaults() {
         fScriptsFolderTextField.setText(getPreferenceStore().getDefaultString(PREFS_SCRIPTS_FOLDER));
         fEditorPathTextField.setText(getPreferenceStore().getDefaultString(PREFS_EDITOR));
+        fMavenRepoPathTextField.setText(getPreferenceStore().getDefaultString(PREFS_MAVEN_REPO_FOLDER));
         fDoubleClickBehaviourCombo.select(getPreferenceStore().getDefaultInt(PREFS_DOUBLE_CLICK_BEHAVIOUR));
     }
     

@@ -41,6 +41,7 @@ public class PreferenceInitializer extends AbstractPreferenceInitializer impleme
 		store.setDefault(PREFS_DOUBLE_CLICK_BEHAVIOUR, 0);
 		
 		store.setDefault(PREFS_SCRIPTS_FOLDER, new File(ArchiPlugin.INSTANCE.getUserDataFolder(), "groovy-scripts").getAbsolutePath());
+		store.setDefault(PREFS_MAVEN_REPO_FOLDER, new File(System.getProperty("user.home"), ".m2").getAbsolutePath());
 		
 		store.setDefault(PREFS_CONSOLE_WORD_WRAP, true);
 		store.setDefault(PREFS_CONSOLE_SCROLL_LOCK, false);

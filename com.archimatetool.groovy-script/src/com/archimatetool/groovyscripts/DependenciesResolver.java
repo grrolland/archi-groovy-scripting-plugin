@@ -44,6 +44,16 @@ public class DependenciesResolver {
         return new File(mavenHome.getPath());
 	}
 	
+	private File getMavenGlobalSettings() {
+		URL mavenHome = FileLocator.find(ArchiScriptPlugin.INSTANCE.getBundle(), new Path("tools/maven/conf/settings.xml"), null);
+        try {
+			mavenHome = FileLocator.toFileURL(mavenHome);
+		} catch (IOException e2) {
+			e2.printStackTrace();
+		}
+        return new File(mavenHome.getPath());
+	}
+	
 	private File getPOM() {
 		URL mavenPom = FileLocator.find(ArchiScriptPlugin.INSTANCE.getBundle(), new Path("tools/pom.xml"), null);
         try {
@@ -60,6 +70,14 @@ public class DependenciesResolver {
 	
 	private String getDepsPath() {
 		return ArchiScriptPlugin.INSTANCE.getPreferenceStore().getString(IPreferenceConstants.PREFS_SCRIPTS_FOLDER) + File.separator +".deps";
+	}
+	
+	private File getMavenSettings() {
+		File settings = new File(ArchiScriptPlugin.INSTANCE.getPreferenceStore().getString(IPreferenceConstants.PREFS_MAVEN_REPO_FOLDER) + File.separator +"settings.xml");
+		if (settings.exists())
+			return settings;
+		else
+			return null;
 	}
 	
 	
@@ -80,7 +98,10 @@ public class DependenciesResolver {
         request.setProperties(props);
         request.setBatchMode(true);
         request.setPomFile(getPOM());
-		
+        request.setGlobalSettingsFile(getMavenGlobalSettings());
+        File settings = getMavenSettings();
+        if (null != settings)
+        	request.setUserSettingsFile(settings);
 		return request;
 	}
 	

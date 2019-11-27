@@ -19,6 +19,7 @@ public interface IPreferenceConstants {
     String PREFS_EDITOR = "scriptEditor";
     String PREFS_DOUBLE_CLICK_BEHAVIOUR = "doubleClickBehaviour";
     String PREFS_SCRIPTS_FOLDER = "scriptsFolder";
+    String PREFS_MAVEN_REPO_FOLDER = "mavenRepoFolder";
     
     String PREFS_CONSOLE_WORD_WRAP = "consoleWordWrap";
     String PREFS_CONSOLE_SCROLL_LOCK = "consoleScrollLock";
